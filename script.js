@@ -31,74 +31,74 @@ function getWeather(city) {
       let iconCode = data.weather[0].icon;
 
       if (iconCode === "01d") {
-          document.getElementById("icon").innerHTML = '<i class="fas fa-sun"></i>';
-        } else if (iconCode === "10d" || iconCode === "09d") {
-          document.getElementById("icon").innerHTML = '<i class="fas fa-umbrella"></i>';
-        } else if (iconCode === "03d" || iconCode === "04d") {
-          document.getElementById("icon").innerHTML = '<i class="fas fa-cloud"></i>';
-        } else if (iconCode === "13d") {
-          document.getElementById("icon").innerHTML = '<i class="fas fa-snowflake"></i>';
-        }
+        document.getElementById("icon").innerHTML = '<i class="fas fa-sun"></i>';
+      } else if (iconCode === "10d" || iconCode === "09d") {
+        document.getElementById("icon").innerHTML = '<i class="fas fa-umbrella"></i>';
+      } else if (iconCode === "03d" || iconCode === "04d") {
+        document.getElementById("icon").innerHTML = '<i class="fas fa-cloud"></i>';
+      } else if (iconCode === "13d") {
+        document.getElementById("icon").innerHTML = '<i class="fas fa-snowflake"></i>';
+      }      
       },
     });
   }
   
+// // Save search to local storage
+// const saveSearch = (city) => {
+//   let searches;
+//   if (localStorage.getItem("searches") === null) {
+//     searches = [];
+//   } else {
+//     searches = JSON.parse(localStorage.getItem("searches"));
+//   }
+//   searches.push(city);
+//   localStorage.setItem("searches", JSON.stringify(searches));
+// };
 
+// // Search button click event
+// const searchButton = document.querySelector("#search-button");
+// searchButton.addEventListener("click", () => {
+//   const cityInput = document.querySelector("#city-input");
+//   saveSearch(cityInput.value);
+//   displaySearches();
+// });
 
-  // // get previous searches
-  // let prevSearches = JSON.parse(localStorage.getItem("prevSearches")) || [];
+// // Clear button click event
+// const clearButton = document.querySelector("#clear-button");
+// clearButton.addEventListener("click", () => {
+//   localStorage.removeItem("searches");
+//   displaySearches();
 
-  // // add current city to previous searches if it's not already there
-  // if (!prevSearches.includes(city)) {
-  //   prevSearches.push(city);
-  //   // limit the number of stored previous searches to 5
-  //   if (prevSearches.length > 5) {
-  //     prevSearches.shift();
-  //   }
-  //   localStorage.setItem("prevSearches", JSON.stringify(prevSearches));
-  // }
+// // clear weather data
+//    $("#current-city").empty();
+//    $("#icon").empty();
+//    $("#temperature").empty();
+//    $("#wind-speed").empty();
+//    $("#humidity").empty();
+// });
 
-  // // display previous searches
-  // $("#prevSearches").empty();
-  // for (let i = 0; i < prevSearches.length; i++) {
-  //   let cityBtn = $("<button>").text(prevSearches[i]);
-  //   cityBtn.on("click", function () {
-  //     getWeather(this.textContent);
-  //   });
-  //   $("#prevSearches").append(cityBtn);
-  // }
-  //pull previous searches from local storage
-  let history = JSON.parse(localStorage.getItem("history")) || [];
+// // Display revious searches on page load
+// displaySearches(){
 
-  //sets history array search to correct length
-  if (history.length > 0) {
-    weatherFunction(history[history.length - 1]);
-  }
-  //makes a row for each element in history array(searchTerms)
-  for (let i = 0; i < history.length; i++) {
-    createRow(history[i]);
-  }
+// const displaySearches = () => {
+//   let searches;
+//   if (localStorage.getItem("searches") === null) {
+//     searches = [];
+//   } else {
+//     searches = JSON.parse(localStorage.getItem("searches"));
+//   }
+//   const historyList = document.querySelector(".history");
+//   historyList.innerHTML = "";
+//   searches.forEach((search) => {
+//     const li = document.createElement("li");
+//     li.className = "list-group-item";
+//     li.appendChild(document.createTextNode(search));
+//     historyList.appendChild(li);
+//   });
+// };
 
-  //puts the searched cities underneath the previous searched city 
-  function createRow(text) {
-    let listItem = $("<li>").addClass("list-group-item").text(text);
-    $(".history").append(listItem);
-  }
+// }
 
-  //listener for list item on click function
-  $(".history").on("click", "li", function () {
-    weatherFunction($(this).text());
-    weatherForecast($(this).text());
-  });
-
-// clear weather data
-$("#clear-button").on("click", function () {
-  $("#current-city").empty();
-  $("#icon").empty();
-  $("#temperature").empty();
-  $("#wind-speed").empty();
-  $("#humidity").empty();
-  });
 
 // Five-day forecast
 
