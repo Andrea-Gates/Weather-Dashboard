@@ -1,15 +1,18 @@
 body {  
-    max-width: 1040px;
+    background-image: url("ivan-stanley-YV0VAKVwFxA-unsplash-copy.jpg");
+    background-repeat: no-repeat;
+    max-width: 1200px;
     font-size: 18px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-left: 20px;
 }
 
 .jumbotron {
+    justify-content: center;
+    width: 100%;
     text-align: center;
-    background-color:blue;
+    background-color:#229bcb3f;
     color:white;
-    border: solid, black;
     border-radius: 6px;
     padding-top: 30px;
     padding-bottom: 20px;
@@ -30,7 +33,8 @@ body {
   #search-button {
     height:min-content;
     margin-top: 0;
-    background-color:aqua;
+    background-color:#2ea9d2;
+    color:white;
     border-radius: 4px;
     margin-left: 10px;
     margin-right: 10px;
@@ -39,7 +43,8 @@ body {
   #clear-button {
     height: min-content;
     margin-top: 0;
-    background-color:aquamarine;
+    background-color:#adbbc4;
+    color:white;
     border-radius: 4px;
     margin-right: 20px;
     /* margin-right: 50px; */
@@ -50,14 +55,16 @@ body {
   }
 
   #weather-result {
+    width: 70%;
     margin-top: 20px;
-    width: 65%;
-    background-color:blue;
+    background-color:#adbbc455;
     color: white;
-    border-radius: 6px;
+    /* border-radius: 6px; */
   }
 
   #current-weather {
+    width: 100%;
+    background-color:#adbbc455;
     padding-top: 20px;
   }
 

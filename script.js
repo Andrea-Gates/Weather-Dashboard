@@ -21,7 +21,7 @@ function getWeather(city) {
     success: function (data) {
       // display current weather data
       $("#current-city").text(data.name + " " + data.sys.country);
-$("#icon").text(data.weather[0].main + "" + "icon");
+$("#icon").text(data.weather[0].main + "icon");
 $("#temperature").text(data.main.temp + "°F");
 $("#wind-speed").text(data.wind.speed + " mph");
 $("#humidity").text(data.main.humidity + "%");
