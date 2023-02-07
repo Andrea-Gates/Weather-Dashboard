@@ -22,26 +22,52 @@ function getWeather(city) {
       // display current weather data
       $("#current-city").text(data.name + " " + data.sys.country);
       $("#icon").text(data.weather[0].main + "" + "icon");
-      let temperature = (data.main.temp -273.15) * 9/5 + 32;
+      let temperature = ((data.main.temp - 273.15) * 9) / 5 + 32;
       $("#temperature").text(temperature.toFixed(2) + "°F");
       $("#wind-speed").text(data.wind.speed + " mph");
       $("#humidity").text(data.main.humidity + "%");
-
+      
       let weatherCondition = data.weather[0].main;
       let iconCode = data.weather[0].icon;
+      document.getElementById("icon").innerHTML = `<img src="http://openweathermap.org/img/wn/${iconCode}@2x.png"></img>`;
+    },
+  });
+}
 
-      if (iconCode === "01d") {
-        document.getElementById("icon").innerHTML = '<i class="fas fa-sun"></i>';
-      } else if (iconCode === "10d" || iconCode === "09d") {
-        document.getElementById("icon").innerHTML = '<i class="fas fa-umbrella"></i>';
-      } else if (iconCode === "03d" || iconCode === "04d") {
-        document.getElementById("icon").innerHTML = '<i class="fas fa-cloud"></i>';
-      } else if (iconCode === "13d") {
-        document.getElementById("icon").innerHTML = '<i class="fas fa-snowflake"></i>';
-      }      
-      },
-    });
-  }
+
+// function getWeather(city) {
+//   $.ajax({
+//     type: "GET",
+//     url:
+//       "https://api.openweathermap.org/data/2.5/weather?q=" +
+//       city +
+//       "&appid=db96798e36648272b771c43556b2105a",
+//     dataType: "json",
+//     success: function (data) {
+//       // display current weather data
+//       $("#current-city").text(data.name + " " + data.sys.country);
+//       $("#icon").text(data.weather[0].main + "" + "icon");
+//       let temperature = (data.main.temp -273.15) * 9/5 + 32;
+//       $("#temperature").text(temperature.toFixed(2) + "°F");
+//       $("#wind-speed").text(data.wind.speed + " mph");
+//       $("#humidity").text(data.main.humidity + "%");
+
+//       // let weatherCondition = data.weather[0].main;
+//       // let iconCode = data.weather[0].icon;
+//       let iconSrc = (`http://openweathermap.org/img/wn/$` + iconSrc + `@2x.png`)
+
+//       if (iconCode === "01d") {
+//         document.getElementById("icon").innerHTML = '<i class="fas fa-sun"></i>';
+//       } else if (iconCode === "10d" || iconCode === "09d") {
+//         document.getElementById("icon").innerHTML = '<i class="fas fa-umbrella"></i>';
+//       } else if (iconCode === "03d" || iconCode === "04d") {
+//         document.getElementById("icon").innerHTML = '<i class="fas fa-cloud"></i>';
+//       } else if (iconCode === "13d") {
+//         document.getElementById("icon").innerHTML = '<i class="fas fa-snowflake"></i>';
+//       }      
+//       },
+//     });
+//   }
   
 // // Save search to local storage
 // const saveSearch = (city) => {
