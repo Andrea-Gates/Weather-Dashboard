@@ -1,75 +1,124 @@
-let now = moment().format('MMMM Do YYYY, h:mm:ss a');
-document.getElementById("displayDateTime").innerHTML = now;
+$(document).ready(function() {
+  let city = "city";
+  let APIKey = "8069459a7756ef7bdd8a06ec8a382c04";
+  let queryURL="https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
-let cityCounter = 0; // Add a counter to create unique keys
-let APIKey = "db96798e36648272b771c43556b2105a";
+  let now = moment().format('MMMM Do YYYY, h:mm:ss a');
+  $("#displayDateTime").text(now);
+});
 
-// search for city weather
+
 $("#search-button").on("click", function () {
   let city = $("#city-input").val();
   getWeather(city);
 });
 
+// function to find if search data exist (i.e., is this a real city: "Tokyo", not "tokyo")
+function find(c){
+  for (let i=0; i<sCity.length; i++){
+      if(c.toUpperCase()===sCity[i]){
+          return -1;
+      }
+  }
+  return 1;
+}
+
+// display weather according to city text input into search box
+function displayWeather(event){
+  event.preventDefault();
+  if(searchCity.val().trim()!==""){
+      city=searchCity.val().trim();
+      currentWeather(city);
+  }
+}
+// Create ajax call to get weather data
 function getWeather(city) {
+}
   $.ajax({
-    type: "GET",
-    url:
-      "https://api.openweathermap.org/data/2.5/weather?q=" +
-      city +
-      "&appid=db96798e36648272b771c43556b2105a",
-    dataType: "json",
-    success: function (data) {
-      // display current weather data
-      $("#current-city").text(data.name + " " + data.sys.country);
-      $("#icon").text(data.weather[0].main + "" + "icon");
-      let temperature = ((data.main.temp - 273.15) * 9) / 5 + 32;
-      $("#temperature").text(temperature.toFixed(2) + "°F");
-      $("#wind-speed").text(data.wind.speed + " mph");
-      $("#humidity").text(data.main.humidity + "%");
-      
-      let weatherCondition = data.weather[0].main;
-      let iconCode = data.weather[0].icon;
-      document.getElementById("icon").innerHTML = `<img src="http://openweathermap.org/img/wn/${iconCode}@2x.png"></img>`;
-    },
-  });
+    url: queryURL,
+    method: "GET",
+  })
+  
+  .then(data) {
+
+    let iconCode = data.weather[0].icon;
+    document.getElementById("icon").innerHTML = `<img src="http://openweathermap.org/img/wn/${iconCode}@2x.png"></img>`;
+    let date = new Date(response.dt * 1000).toLocaleDateString();
+    $("#current-city").text(data.name + " " + data.sys.country);
+    // $("#icon").text(data.weather[0].main + "" + "icon");
+    let tempF = (data.main.temp - 273.15) * 1.80 + 32;
+    $(currentTemperature).html((tempF).toFixed(2) + "&#8457");
+    $(currentHumidity).html(response.main.humidity + "%");
+    let ws = response.wind.speed;
+    let windsmph = (ws * 2.237).toFixed(1);
+    $(currentWSpeed).html(windsmph + "MPH");
+  }
+
+  if (response.cod==200){
+    sCity=JSON.parse(localStorage.getItem("cityname"));
+    console.log(sCity);
+    if (sCity==null){
+        sCity=[];
+        sCity.push(city.toUpperCase()
+        );
+        localStorage.setItem("cityname",JSON.stringify(sCity));
+        addToList(city);
+    }
+    else {
+        if(find(city)>0){
+            sCity.push(city.toUpperCase());
+            localStorage.setItem("cityname",JSON.stringify(sCity));
+            addToList(city);
+        }
+    }
+}
+  
+    function addToList(c){
+    let listEl= $("<li>"+c.toUpperCase()+"</li>");
+    $(listEl).attr("class","list-group-item");
+    $(listEl).attr("data-value",c.toUpperCase());
+    $(".list-group").append(listEl);
+}
+
+// display the past search again when the list group item is clicked in search history
+    function invokePastSearch(event){
+    let liEl=event.target;
+    if (event.target.matches("li")){
+      city=liEl.textContent.trim();
+      currentWeather(city);
+  }
+}
+
+  function loadlastCity(){
+  $("ul").empty();
+  let sCity = JSON.parse(localStorage.getItem("cityname"));
+  if(sCity!==null){
+      sCity=JSON.parse(localStorage.getItem("cityname"));
+      for(i=0; i<sCity.length;i++){
+          addToList(sCity[i]);
+      }
+      city=sCity[i-1];
+      currentWeather(city);
+  }
+}
+
+//Clear the search history from the page
+function clearHistory(event){
+  event.preventDefault();
+  sCity=[];
+  localStorage.removeItem("cityname");
+  document.location.reload();
 }
 
 
-// function getWeather(city) {
-//   $.ajax({
-//     type: "GET",
-//     url:
-//       "https://api.openweathermap.org/data/2.5/weather?q=" +
-//       city +
-//       "&appid=db96798e36648272b771c43556b2105a",
-//     dataType: "json",
-//     success: function (data) {
-//       // display current weather data
-//       $("#current-city").text(data.name + " " + data.sys.country);
-//       $("#icon").text(data.weather[0].main + "" + "icon");
-//       let temperature = (data.main.temp -273.15) * 9/5 + 32;
-//       $("#temperature").text(temperature.toFixed(2) + "°F");
-//       $("#wind-speed").text(data.wind.speed + " mph");
-//       $("#humidity").text(data.main.humidity + "%");
+//Click Handlers
+$("#search-button").on("click",displayWeather);
+$(document).on("click",invokePastSearch);
+$(window).on("load",loadlastCity);
+$("#clear-history").on("click",clearHistory);
 
-//       // let weatherCondition = data.weather[0].main;
-//       // let iconCode = data.weather[0].icon;
-//       let iconSrc = (`http://openweathermap.org/img/wn/$` + iconSrc + `@2x.png`)
 
-//       if (iconCode === "01d") {
-//         document.getElementById("icon").innerHTML = '<i class="fas fa-sun"></i>';
-//       } else if (iconCode === "10d" || iconCode === "09d") {
-//         document.getElementById("icon").innerHTML = '<i class="fas fa-umbrella"></i>';
-//       } else if (iconCode === "03d" || iconCode === "04d") {
-//         document.getElementById("icon").innerHTML = '<i class="fas fa-cloud"></i>';
-//       } else if (iconCode === "13d") {
-//         document.getElementById("icon").innerHTML = '<i class="fas fa-snowflake"></i>';
-//       }      
-//       },
-//     });
-//   }
-  
-// // Save search to local storage
+// Save search to local storage
 // const saveSearch = (city) => {
 //   let searches;
 //   if (localStorage.getItem("searches") === null) {
@@ -104,7 +153,8 @@ function getWeather(city) {
 // });
 
 // // Display revious searches on page load
-// displaySearches(){
+// displaySearches();{
+// }
 
 // const displaySearches = () => {
 //   let searches;
