@@ -24,12 +24,9 @@
     </div>
 
     <div class="container">
-        <!--Row for searching a city-->
-        <div class="row">
-            <div class="col-sm-4 bg-light">
-                <!--Here we create an HTML form for handling the inputs-->
+        <div class="row" id="city-search">
+            <div class="col-sm-4 border border-light rounded">
                 <h4 class="pt-1">Search for a City:</h4>
-                <!--Here we create the text box for capturing the search city Name-->
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" id="search-city" aria-label="City Search"
                         aria-describedby="search-button">
@@ -38,14 +35,12 @@
                                 class="fa fa-search"></i></button>
                     </div>
                 </div>
-                <!--City Search-->
                 <button class=" btn btn-primary" type="button" id="clear-history">Clear history</button>
                 <ul class="list-group">
                 </ul>
-
             </div>
-            <div class="col-sm-8">
-                <div class="row ml-2 border border-dark rounded">
+            <div class="col-sm-8" id="weather-result">
+                <div class="row ml-2 border border-light rounded">
                     <div class="col-sm-12" id="current-weather">
                         <h3 class="city-name mb-1 mt-2 bolder" id="current-city"></h3>
                         <div id="icon"></div>
@@ -56,8 +51,10 @@
                 </div>
                 <!--Row for future data to be dumped here-->
                 <div class="col-sm-12" id="future-weather">
+                    <br>
                     <h3>5-Day Forecast:</h3>
-                    <div class="row text-light">
+                    <hr>
+                    <!-- <div class="row text-light">
                         <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
                             <p id="fDate0"></p>
                             <p id="fImg0"></p>
@@ -91,10 +88,9 @@
                             <p>Temp:<span id="fTemp4"></span></p>
                             <p>Wind:<span id="fWind2"></span></p>
                             <p>Humidity:<span id="fHumidity4"></span></p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -107,5 +103,4 @@
     <script src="script.js"></script>
 
 </body>
-
 </html>
