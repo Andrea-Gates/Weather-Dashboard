@@ -5,7 +5,7 @@ $("#displayDateTime").text(displayDateTime);
 // OpenWeatherMap API key
 const API_KEY = "8069459a7756ef7bdd8a06ec8a382c04";
 
-// DOM elements
+// define DOM elements by jQuery selectors
 const $searchInput = $("#search-city");
 const $searchButton = $("#search-button");
 const $currentCity = $("#current-city");
@@ -14,17 +14,16 @@ const $humidity = $("#humidity");
 const $windSpeed = $("#wind-speed");
 const $icon = $("#icon");
 
-// Event listener for search button
+// search button
 $searchButton.on("click", function () {
   const cityName = $searchInput.val().trim();
 
-  // Make AJAX request to OpenWeatherMap API for current weather
+  // AJAX request to OpenWeatherMap API for current weather
   $.ajax({
     url: `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric`,
     method: "GET",
     dataType: "json",
     success: function (data) {
-      // Update DOM with current weather data
       $currentCity.text(`${data.name}, ${data.sys.country}`);
       $temperature.text(`${data.main.temp}°C`);
       $humidity.text(`${data.main.humidity}%`);
@@ -32,15 +31,14 @@ $searchButton.on("click", function () {
       $icon.html(
         `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png" alt="${data.weather[0].description}">`
       );
-
       const today = moment().format("YYYY-MM-DD");
-      // Make AJAX request for five-day forecast
+
+      // AJAX request for five-day forecast
       $.ajax({
         url: `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=metric&cnt=5&start=${today}`,
         method: "GET",
         dataType: "json",
         success: function (data) {
-          // Update DOM with forecast data
           const $forecastList = $("#forecast-list");
           $forecastList.empty();
           for (let i = 0; i < data.list.length; i++) {
@@ -56,9 +54,9 @@ $searchButton.on("click", function () {
     <li>
       <p>${forecastDateString}</p>
       <img src="https://openweathermap.org/img/w/${forecastIcon}.png" alt="">
-      <p>Temp: ${forecastTemp}°C</p>
-      <p>Humidity: ${forecastHumidity}%</p>
-      <p>Wind Speed: ${forecastWindSpeed} m/s</p>
+      <p>Temp:  ${forecastTemp}°C</p>
+      <p>Humidity:  ${forecastHumidity}%</p>
+      <p>Wind Speed:  ${forecastWindSpeed} m/s</p>
     </li>
   `);
           }
@@ -75,6 +73,7 @@ $searchButton.on("click", function () {
 });
 
 // Save searched city to local storage
+let cityName = "cities";
 let cities = localStorage.getItem("cities")
   ? JSON.parse(localStorage.getItem("cities"))
   : [];
@@ -92,6 +91,7 @@ function clearHistory(event) {
   document.location.reload();
 }
 
+let displayWeather = "data";
 //Click Handlers
 $("#search-button").on("click", displayWeather);
 // $(document).on("click", invokePastSearch);
