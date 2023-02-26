@@ -71,16 +71,15 @@ $searchButton.on("click", function () {
 
       // AJAX request for five-day forecast
       $.ajax({
-        url: `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=metric&cnt=5`,
+        url: `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=metric`,
         method: "GET",
         dataType: "json",
         success: function (data) {
           $forecastList.empty();
-          for (let i = 1; i < 5; i++) {
+          for (let i = 0; i < 5; i++) {
             const forecastData = data.list[i];
             const forecastDate = moment(forecastData.dt_txt);
-            const forecastDateString =
-              forecastDate.format("dddd, MMMM Do YYYY");
+            const forecastDateString = forecastDate.format("llll");
             const forecastIcon = forecastData.weather[0].icon;
             const forecastTemp = forecastData.main.temp.toFixed(1);
             const forecastHumidity = forecastData.main.humidity;
