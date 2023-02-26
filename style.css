@@ -61,31 +61,23 @@ body {
 
 #weather-result {
   width: 70%;
-  margin-top: 20px;
-  background-color: #adbbc455;
+  background-color: #adbbc48a;
   color: white;
-  /* border-radius: 6px; */
 }
 
 #weather-result h3 {
   color: white;
 }
 
-#current-weather {
-  width: 100%;
-  background-color: #adbbc455;
-  padding-top: 20px;
+#forecast-list {
+  width: auto;
+  display: inline-flex;
+  width: max-content;
+  padding-right: 20px;
+  border-color: white, 2px;
+  border-radius:4px;
+  margin-top: 20px;
+  padding-left: 20px;
 }
 
-.icon {
-  size: 50px;
-}
-
-#future-weather hr{
-  color:blue;
-}
-
-.forecast {
-  display: flex;
-}
 

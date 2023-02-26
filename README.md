@@ -2,31 +2,12 @@
 
 ## Weather Dashboard
 
-a weather dashboard web page. It includes various components like search box, clear history button, and weather data components like temperature, humidity, wind speed, and a 5-day forecast. The page design is built using the Bootstrap framework, and the Font Awesome library is used for the icons.
+For this assignment I have written a weather dashboard app, starting with HTML and using a Bootstrap framework, JavaScript and the OpenWeatherMap API. The dashboard includes a search bar to input a city and displays the current weather conditions as well as a 5-day forecast.
 
-The main components of the web page are:
+The body of the page is divided into two main sections: a jumbotron at the top, which contains the heading of the page and a brief introduction, and a container below that, which is further divided into two columns. The left column is a search bar that allows the user to input the name of a city. The search bar has an input field and a search button. Below the search bar, there is a "Clear history" button.
 
-A jumbotron container at the top with a title and a brief description of the website.
-A search box where users can enter the name of a city they want to see the weather data for.
-A "Clear History" button to clear the search history.
-Current weather data like the city name, temperature, humidity, wind speed, and an icon representing the weather condition.
-A 5-day forecast showing the date, weather icon, temperature, wind speed, and humidity for each day.
-The code also includes a link to an external stylesheet named "style.css" and two external libraries - Bootstrap and Font Awesome.
-For this challenge I used JavaScript to build a weather application that allows the user to search for the current weather conditions of a city. The current date and time are displayed on the page using the moment.js library. When the user clicks the search button, an AJAX request is sent to the OpenWeatherMap API to retrieve the current weather data for the city entered in the input field. The weather data is then displayed on the page, including the city name, temperature, wind speed, and humidity. An icon is also displayed, representing the current weather condition, and is determined by the icon code returned from the API. 
+The right column displays the current weather conditions and a 5-day forecast for the city entered in the search bar. The current weather conditions include the city name, an icon, temperature, humidity, and wind speed. The 5-day forecast includes the date, an icon, temperature, wind, and humidity for each day. The forecast is displayed using a grid layout, with each day's information displayed in a separate box.
 
-The user's search history is saved to local storage and displayed in a list on the page. The user can clear the weather data and their search history using the clear button.
-
-The page is built in HTML defining the structure of a weather dashboard web page. This includes a jumbotron section with a title, a city search section with an input field, search and clear buttons, a display area for previously searched cities, and a result section to display the current weather information of a city. The page uses Bootstrap, FontAwesome and a custom stylesheet "style.css".
-
-I used (https://openweathermap.org/forecast5) to retrieve weather data for cities. 
-
-```text
-AS A traveler
-I WANT to see the weather outlook for any chosen city
-SO THAT I can pack accordingly
-```
-
-
----
+My HTML code is linked to two external stylesheets, one for the Bootstrap framework and another for Font Awesome icons. The styles for the HTML elements are defined in the external stylesheet "style.css". The code also includes two external JavaScript files, one for jQuery and another for the custom JavaScript code that handles the user input and fetches data from a the OpenWeatherMap API.
 
 © 2023 Andrea Gates

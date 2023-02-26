@@ -1,23 +1,23 @@
-  let displayDateTime = document.getElementById("displayDateTime");
-  setInterval(function () {
-    let now = moment();
-    displayDateTime.textContent = now.format("MMMM Do YYYY, h:mm:ss a");
-  }, 1000);
+let displayDateTime = document.getElementById("displayDateTime");
+setInterval(function () {
+  let now = moment();
+  displayDateTime.textContent = now.format("MMMM Do YYYY, h:mm:ss a");
+}, 1000);
 
-  let currentDay = moment().format("M/DD/YYYY");
-  // OpenWeatherMap API key
-  const API_KEY = "8069459a7756ef7bdd8a06ec8a382c04";
-  // define DOM elements by jQuery selectors
-  const $searchInput = $("#search-city");
-  const $searchButton = $("#search-button");
-  const $currentCity = $("#current-city");
-  const $temperature = $("#temperature");
-  const $humidity = $("#humidity");
-  const $windSpeed = $("#wind-speed");
-  const $icon = $("#icon");
-  const $forecastList = $("#forecast-list");
+let currentDay = moment().format("M/DD/YYYY");
+// OpenWeatherMap API key
+const API_KEY = "7b35b25c06f5ba186bd9f9a5682e4eed";
+// define DOM elements by jQuery selectors
+const $searchInput = $("#search-city");
+const $searchButton = $("#search-button");
+const $currentCity = $("#current-city");
+const $temperature = $("#temperature");
+const $humidity = $("#humidity");
+const $windSpeed = $("#wind-speed");
+const $icon = $("#icon");
+const $forecastList = $("#forecast-list");
 
-  let searchHistoryArray = loadSearchHistory;
+let searchHistoryArray = loadSearchHistory;
 
 // search button
 $searchButton.on("click", function () {
@@ -42,7 +42,7 @@ $searchButton.on("click", function () {
 
       function displayForecast(data) {
         // loop through the forecast data and display it on the webpage
-        for (let i = 0; i < 5; i++) {
+        for (let i = 1; i < 5; i++) {
           // get the forecast date
           let date = new Date(data.list[i * 8].dt * 1000);
           let day = date.getDate();
@@ -68,6 +68,7 @@ $searchButton.on("click", function () {
             humidity + " %";
         }
       }
+
       // AJAX request for five-day forecast
       $.ajax({
         url: `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=metric&cnt=5`,
@@ -75,7 +76,7 @@ $searchButton.on("click", function () {
         dataType: "json",
         success: function (data) {
           $forecastList.empty();
-          for (let i = 0; i < data.list.length; i++) {
+          for (let i = 1; i < 5; i++) {
             const forecastData = data.list[i];
             const forecastDate = moment(forecastData.dt_txt);
             const forecastDateString =

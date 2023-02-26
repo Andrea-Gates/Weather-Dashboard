@@ -41,73 +41,49 @@
                         <p>Wind Speed: <span class="current" id="wind-speed"></span></p>
                     </div>
                 </div>
-                <!--Row for future data to be dumped here-->
-                <div class="col-sm-12" id="future-weather">
-                    <br>
-                    <h2>5-Day Forecast:</h2>
-                    <div id="forecast-list" style="margin-left: 2em">
-                        <div class="row text-light">
-                            <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
-                                <ul>
-                                    <li>
-                                        <p id="fDate1"></p>
-                                        <p id="fImg1"></p>
-                                        <p>Temp: <span id=" fTemp1"></span></p>
-                                        <p>Wind: <span id=" fWind2"></span></p>
-                                        <p>Humidity: <span id="f Humidity1"></span></p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
-                                <ul>
-                                    <li>
-                                        <p id="fDate2"></p>
-                                        <p id="fImg2"></p>
-                                        <p>Temp: <span id="fTemp2"></span></p>
-                                        <p>Wind: <span id="fWind2"></span></p>
-                                        <p>Humidity: <span id="fHumidity2"></span></p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
-                                <ul>
-                                    <li>
-                                        <p id="fDate3"></p>
-                                        <p id="fImg3"></p>
-                                        <p>Temp: <span id="fTemp3"></span></p>
-                                        <p>Wind: <span id="fWind3"></span></p>
-                                        <p>Humidity: <span id="fHumidity3"></span></p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
-                                <ul>
-                                    <li>
-                                        <p id="fDate4"></p>
-                                        <p id="fImg4"></p>
-                                        <p>Temp: <span id="fTemp4"></span></p>
-                                        <p>Wind: <span id="fWind4"></span></p>
-                                        <p>Humidity: <span id="fHumidity4"></span></p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
-                                <ul>
-                                    <li>
-                                        <p id="fDate5"></p>
-                                        <p id="fImg5"></p>
-                                        <p>Temp: <span id="fTemp5"></span></p>
-                                        <p>Wind: <span id="fWind5"></span></p>
-                                        <p>Humidity: <span id="fHumidity5"></span></p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--Row for future data to be dumped here-->
+<div class="container">
+    <div id="forecast-list">
+        <h2>5-Day Forecast:</h2>
+
+        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
+            <p id="fDate1"></p>
+            <p id="fImg1"></p>
+            <p>Temp: <span id="fTemp1"></span></p>
+            <p>Wind: <span id="fWind2"></span></p>
+            <p>Humidity: <span id="fHumidity1"></span></p>
+        </div>
+        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
+            <p id="fDate2"></p>
+            <p id="fImg2"></p>
+            <p>Temp: <span id="fTemp2"></span></p>
+            <p>Wind: <span id="fWind2"></span></p>
+            <p>Humidity: <span id="fHumidity2"></span></p>
+        </div>
+        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
+            <p id="fDate3"></p>
+            <p id="fImg3"></p>
+            <p>Temp: <span id="fTemp3"></span></p>
+            <p>Wind: <span id="fWind3"></span></p>
+            <p>Humidity: <span id="fHumidity3"></span></p>
+        </div>
+        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
+            <p id="fDate4"></p>
+            <p id="fImg4"></p>
+            <p>Temp: <span id="fTemp4"></span></p>
+            <p>Wind: <span id="fWind4"></span></p>
+            <p>Humidity: <span id="fHumidity4"></span></p>
+        </div>
+        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
+            <p id="fDate5"></p>
+            <p id="fImg5"></p>
+            <p>Temp: <span id="fTemp5"></span></p>
+            <p>Wind: <span id="fWind5"></span></p>
+            <p>Humidity: <span id="fHumidity5"></span></p>
         </div>
     </div>
+</div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js">
@@ -116,6 +92,6 @@
     </script>
     <script src="script.js">
     </script>
-</body>
 
+</body>
 </html>
