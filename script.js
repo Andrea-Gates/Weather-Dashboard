@@ -110,33 +110,28 @@ function titleCase(str) {
   return splitStr.join(" ");
 }
 
-//load cities from local storage and create history buttons
+// Load cities from local storage and create history buttons
 function loadSearchHistory() {
-  let searchHistoryArray = JSON.parse(localStorage.getItem("search history"));
+  let searchHistoryArray = JSON.parse(
+    localStorage.getItem("search history")
+  ) || { searchedCity: [] };
 
-  // if localStorage empty, create a search array to keep user input
-  if (!searchHistoryArray) {
-    searchHistoryArray = {
-      searchedCity: [],
-    };
-  } else {
-    //add search history buttons to page
-    for (let i = 0; i < searchHistoryArray.searchedCity.length; i++) {
-      searchHistory(searchHistoryArray.searchedCity[i]);
-    }
+  // Add search history buttons to page
+  for (let i = 0; i < searchHistoryArray.searchedCity.length; i++) {
+    searchHistory(searchHistoryArray.searchedCity[i]);
   }
 
   return searchHistoryArray;
 }
 
-//save to local storage
-function saveSearchHistory() {
+// Save to local storage
+function saveSearchHistory(searchHistoryArray) {
   localStorage.setItem("search history", JSON.stringify(searchHistoryArray));
 }
 
-//create history buttons
+// Create history buttons
 function searchHistory(city) {
-  let searchHistoryBtn = $("<button>")
+  const searchHistoryBtn = $("<button>")
     .addClass("btn")
     .text(city)
     .on("click", function () {
@@ -145,10 +140,51 @@ function searchHistory(city) {
       $("#five-day-header").remove();
       getWeather(city);
     })
-    .attr({
-      type: "button",
-    });
+    .prop("type", "button");
 
-  // append btn to search history div
+  // Append btn to search history div
   searchHistoryEl.append(searchHistoryBtn);
 }
+
+// //load cities from local storage and create history buttons
+// function loadSearchHistory() {
+//   let searchHistoryArray = JSON.parse(localStorage.getItem("search history"));
+
+//   // if localStorage empty, create a search array to keep user input
+//   if (!searchHistoryArray) {
+//     searchHistoryArray = {
+//       searchedCity: [],
+//     };
+//   } else {
+//     //add search history buttons to page
+//     for (let i = 0; i < searchHistoryArray.searchedCity.length; i++) {
+//       searchHistory(searchHistoryArray.searchedCity[i]);
+//     }
+//   }
+
+//   return searchHistoryArray;
+// }
+
+// //save to local storage
+// function saveSearchHistory() {
+//   localStorage.setItem("search history", JSON.stringify(searchHistoryArray));
+// }
+
+// //create history buttons
+// function searchHistory(city) {
+//   let searchHistoryBtn = $("<button>")
+//     .addClass("btn")
+//     .text(city)
+//     .on("click", function () {
+//       $("#current-weather").remove();
+//       $("#five-day").empty();
+//       $("#five-day-header").remove();
+//       getWeather(city);
+//     })
+//     .attr({
+//       type: "button",
+//     });
+
+//   // append btn to search history div
+//   searchHistoryEl.append(searchHistoryBtn);
+// }

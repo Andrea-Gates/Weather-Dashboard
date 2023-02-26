@@ -73,11 +73,13 @@ body {
   width: auto;
   display: inline-flex;
   width: max-content;
-  padding-right: 20px;
   border-color: white, 2px;
   border-radius:4px;
   margin-top: 20px;
   padding-left: 20px;
 }
 
-
+#forecast-list li {
+  margin-right: 25px;
+}
+    
