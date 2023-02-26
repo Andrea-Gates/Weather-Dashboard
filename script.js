@@ -42,13 +42,11 @@ $searchButton.on("click", function () {
 
       function displayForecast(data) {
         // loop through the forecast data and display it on the webpage
-        for (let i = 1; i < 5; i++) {
+        for (let i = 0; i < 5; i++) {
           // get the forecast date
-          let date = new Date(data.list[i * 8].dt * 1000);
-          let day = date.getDate();
-          let month = date.getMonth() + 1;
-          let year = date.getFullYear();
-          let formattedDate = month + "/" + day + "/" + year;
+          let date = newDate(data.list[i * 8].dt * 1000);
+          let dayOfWeek = moment(date).format("dddd");
+          let formattedDate = moment(date).format("MMMM Do");
           // get the forecast icon
           let iconCode = data.list[i * 8].weather[0].icon;
           let iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
@@ -58,7 +56,7 @@ $searchButton.on("click", function () {
           let humidity = data.list[i * 8].main.humidity;
           // display the forecast data on the webpage
           document.getElementById("fDate" + (i + 1)).textContent =
-            formattedDate;
+            dayOfWeek + ", " + formattedDate;
           document.getElementById("fImg" + (i + 1)).innerHTML =
             "<img src='" + iconURL + "'>";
           document.getElementById("fTemp" + (i + 1)).textContent = temp + " °C";
