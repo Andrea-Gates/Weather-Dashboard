@@ -8,6 +8,7 @@ The body of the page is divided into two main sections: a jumbotron at the top, 
 
 The right column displays the current weather conditions and a 5-day forecast for the city entered in the search bar. The current weather conditions include the city name, an icon, temperature, humidity, and wind speed. The 5-day forecast includes the date, an icon, temperature, wind, and humidity for each day. The forecast is displayed using a grid layout, with each day's information displayed in a separate box.
 
-My HTML code is linked to two external stylesheets, one for the Bootstrap framework and another for Font Awesome icons. The styles for the HTML elements are defined in the external stylesheet "style.css". The code also includes two external JavaScript files, one for jQuery and another for the custom JavaScript code that handles the user input and fetches data from a the OpenWeatherMap API.
+My HTML code is linked to two external stylesheets, one for the Bootstrap framework and another for Font Awesome icons. The styles for the HTML elements are defined in the external stylesheet "style.css". The code also includes two external JavaScript files, one for jQuery and another for the custom JavaScript code that handles the user input and fetches data from the OpenWeatherMap API.
+
 
 © 2023 Andrea Gates

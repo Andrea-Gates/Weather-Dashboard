@@ -26,10 +26,14 @@
                     <input aria-describedby="search-button" aria-label="City Search" class="form-control"
                         id="search-city" type="text">
                     <div class="input-group-append">
-                        <button class=" btn bg-primary text-light" id="search-button"><i
+                        <button class="btn bg-primary text-light" id="search-button"><i
                                 class="fa fa-search"></i></button>
                     </div>
-                </div><button class=" btn btn-primary" id="clear-history" type="button">Clear history</button>
+                </div>
+                <button class="btn btn-primary" id="clear-history" type="button">Clear history</button>
+                <div class="city-search-append">
+                    <!-- Search history buttons will be added here -->
+                </div>
             </div>
             <div class="col-sm-8" id="weather-result">
                 <div class="row ml-2 border border-light rounded">
@@ -41,57 +45,57 @@
                         <p>Wind Speed: <span class="current" id="wind-speed"></span></p>
                     </div>
                 </div>
-<!--Row for future data to be dumped here-->
-<div class="container">
-    <div id="forecast-list">
-        <h2>5-Day Forecast:</h2>
+                <!--Row for future data to be dumped here-->
+                <h2>5-Day Forecast:</h2>
+                <hr>
+                <div class="container">
+                    <br>
+                    <div id="forecast-list">
+                        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
+                            <p id="fDate1"></p>
+                            <p id="fImg1"></p>
+                            <p>Temp: <span id="fTemp1"></span></p>
+                            <p>Wind: <span id="fWind1"></span></p>
+                            <p>Humidity: <span id="fHumidity1"></span></p>
+                        </div>
+                        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
+                            <p id="fDate2"></p>
+                            <p id="fImg2"></p>
+                            <p>Temp: <span id="fTemp2"></span></p>
+                            <p>Wind: <span id="fWind2"></span></p>
+                            <p>Humidity: <span id="fHumidity2"></span></p>
+                        </div>
+                        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
+                            <p id="fDate3"></p>
+                            <p id="fImg3"></p>
+                            <p>Temp: <span id="fTemp3"></span></p>
+                            <p>Wind: <span id="fWind3"></span></p>
+                            <p>Humidity: <span id="fHumidity3"></span></p>
+                        </div>
+                        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
+                            <p id="fDate4"></p>
+                            <p id="fImg4"></p>
+                            <p>Temp: <span id="fTemp4"></span></p>
+                            <p>Wind: <span id="fWind4"></span></p>
+                            <p>Humidity: <span id="fHumidity4"></span></p>
+                        </div>
+                        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
+                            <p id="fDate5"></p>
+                            <p id="fImg5"></p>
+                            <p>Temp: <span id="fTemp5"></span></p>
+                            <p>Wind: <span id="fWind5"></span></p>
+                            <p>Humidity: <span id="fHumidity5"></span></p>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
-            <p id="fDate1"></p>
-            <p id="fImg1"></p>
-            <p>Temp: <span id="fTemp1"></span></p>
-            <p>Wind: <span id="fWind2"></span></p>
-            <p>Humidity: <span id="fHumidity1"></span></p>
-        </div>
-        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
-            <p id="fDate2"></p>
-            <p id="fImg2"></p>
-            <p>Temp: <span id="fTemp2"></span></p>
-            <p>Wind: <span id="fWind2"></span></p>
-            <p>Humidity: <span id="fHumidity2"></span></p>
-        </div>
-        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
-            <p id="fDate3"></p>
-            <p id="fImg3"></p>
-            <p>Temp: <span id="fTemp3"></span></p>
-            <p>Wind: <span id="fWind3"></span></p>
-            <p>Humidity: <span id="fHumidity3"></span></p>
-        </div>
-        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
-            <p id="fDate4"></p>
-            <p id="fImg4"></p>
-            <p>Temp: <span id="fTemp4"></span></p>
-            <p>Wind: <span id="fWind4"></span></p>
-            <p>Humidity: <span id="fHumidity4"></span></p>
-        </div>
-        <div class="col-sm-2 bg-primary forecast-container ml-2 mb-3 p-2 mt-2 rounded">
-            <p id="fDate5"></p>
-            <p id="fImg5"></p>
-            <p>Temp: <span id="fTemp5"></span></p>
-            <p>Wind: <span id="fWind5"></span></p>
-            <p>Humidity: <span id="fHumidity5"></span></p>
-        </div>
-    </div>
-</div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
-    </script>
-    <script src="script.js">
-    </script>
-
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+                </script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js">
+                </script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+                </script>
+                <script src="script.js">
+                </script>
 </body>
 </html>
