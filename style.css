@@ -88,6 +88,11 @@ body {
   margin-top: 20px;
   padding-left: 0px;
 }
+
+.card-body {
+  background-color:#2ea9d2;
+}
+
 #forecast-list li {
   margin-right: 25px;
   background-color: transparent !important;
@@ -99,7 +104,6 @@ body {
   margin-top: 10px;
   margin-right: 10px;
 }
-
 
 
     
